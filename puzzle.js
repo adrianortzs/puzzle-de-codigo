@@ -1,102 +1,102 @@
 // Snippets de código para poder componer el programa
 
-//Usado?: 
+//Usado?: YES
   const middlewares = require('./middlewares');
 //--- Explicación: 
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const bodyParser = require('body-parser');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const session = require('express-session');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const express = require('express');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const bodyParser = require('body-parser');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const session = require('express-session');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const dotenv = require('dotenv');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const middlewares = require('./middlewares');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const routes = require('./routes');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 dotenv.config();
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const app = express();
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const PORT = 4000;
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?: 
+//Usado?: YES
 const dotenv = require('dotenv');
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 dotenv.config();
 //--- Explicación:
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 middlewares.setupApp(app);
 //--- Explicación: 
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 routes.setup(app);
 //--- Explicación: 
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 const validarPalabraMiddleware = (req, res, next) => {
   const palabraCorrecta = process.env.PALABRA_SECRETA || '';
 
@@ -113,7 +113,7 @@ const validarPalabraMiddleware = (req, res, next) => {
 // -------------------------------------------------------------------------------------
 
 
-//Usado?:
+//Usado?: YES
 const setup = (app) => {
   app.get('/', (req, res) => {
     const mensajeError = req.query.error
@@ -130,7 +130,7 @@ const setup = (app) => {
 // -------------------------------------------------------------------------------------
 
 
-//Usado?:
+//Usado?: YES
 res.send(`
   <html>
     <body>
@@ -159,7 +159,7 @@ const setupAPP = (app) => {
   }));
 };
 
-//Usado?:
+//Usado?: YES
 app.post('/profile', middlewares.validarPalabraMiddleware, (req, res) => {
   res.send(`
     <h1>Ruta del Perfil</h1>
@@ -172,14 +172,14 @@ app.post('/profile', middlewares.validarPalabraMiddleware, (req, res) => {
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //--- Explicación: 
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 app.use(session({
   secret: process.env.PALABRA_SECRETA || 'secretoSuperSecreto',
   resave: false,
@@ -190,7 +190,7 @@ app.use(session({
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 app.listen(PORT, () => {
   console.log(`Servidor en ejecución en http://localhost:${PORT}`);
 });
@@ -198,7 +198,7 @@ app.listen(PORT, () => {
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 const verificarSesionMiddleware = (req, res, next) => {
   if (req.session.palabraSecreta) {
     next();
@@ -211,7 +211,7 @@ const verificarSesionMiddleware = (req, res, next) => {
 // -------------------------------------------------------------------------------------
 
 
-//Usado?:
+//Usado?: YES
 app.get('/profile', middlewares.verificarSesionMiddleware, (req, res) => {
   res.send(`
     <h1>Ruta del Perfil (Sesión activa)</h1>
@@ -225,7 +225,7 @@ app.get('/profile', middlewares.verificarSesionMiddleware, (req, res) => {
 // -------------------------------------------------------------------------------------
 
 
-//Usado?:
+//Usado?: YES
 app.post('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -238,7 +238,7 @@ app.post('/logout', (req, res) => {
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 module.exports = {
   setup,
 };
@@ -246,7 +246,7 @@ module.exports = {
 
 // -------------------------------------------------------------------------------------
 
-//Usado?:
+//Usado?: YES
 module.exports = {
   validarPalabraMiddleware,
   verificarSesionMiddleware,
